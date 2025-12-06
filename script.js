@@ -6,10 +6,13 @@ const navLinks = document.querySelector('.nav-links');
 
 hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('nav-active');
-    // Animate Burger Icon change (Optional simple toggle)
-    hamburger.innerHTML = navLinks.classList.contains('nav-active') 
-        ? '<i class="fas fa-times"></i>' 
-        : '<i class="fas fa-bars"></i>';
+    
+    // Toggle icon between bars and times
+    if(navLinks.classList.contains('nav-active')) {
+        hamburger.innerHTML = '<i class="fas fa-times"></i>';
+    } else {
+        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+    }
 });
 
 // Close menu when clicking a link
@@ -27,21 +30,20 @@ const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('active');
-            // Stop observing once revealed (optional)
             scrollObserver.unobserve(entry.target); 
         }
     });
 }, {
-    threshold: 0.15, // Trigger when 15% of element is visible
-    rootMargin: "0px 0px -50px 0px"
+    threshold: 0.1, 
+    rootMargin: "0px 0px -30px 0px"
 });
 
 revealElements.forEach(el => {
-    el.classList.add('reveal'); // Add base class via JS to ensure they are visible if JS fails
+    el.classList.add('reveal'); 
     scrollObserver.observe(el);
 });
 
-// 3. Testimonial Slider
+// 3. Testimonial Slider (Fixed Lag)
 const testimonials = [
     {
         text: "Absolutely the best daycare in Casper! My daughter loves the staff and comes home learning something new every day.",
@@ -58,22 +60,36 @@ const testimonials = [
 ];
 
 let currentTestimonial = 0;
+let slideInterval; // Variable to hold the timer
+let isAnimating = false; // Prevent double clicking rapidly
+
 const textEl = document.querySelector('.testimonial-text');
 const authorEl = document.querySelector('.testimonial-author');
 const dotsContainer = document.querySelector('.dots');
 
-// Initialize Dots
+// Create Dots
 testimonials.forEach((_, index) => {
     const dot = document.createElement('span');
     dot.classList.add('dot');
     if (index === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => showTestimonial(index));
+    
+    // Pass 'true' to indicate a manual click
+    dot.addEventListener('click', () => showTestimonial(index, true));
     dotsContainer.appendChild(dot);
 });
 
 const dots = document.querySelectorAll('.dot');
 
-function showTestimonial(index) {
+function showTestimonial(index, isManual = false) {
+    if (index === currentTestimonial || isAnimating) return;
+    
+    // If user clicked manually, reset the auto-rotation timer
+    if (isManual) {
+        resetInterval();
+    }
+
+    isAnimating = true;
+
     // Fade out
     textEl.style.opacity = 0;
     authorEl.style.opacity = 0;
@@ -83,21 +99,36 @@ function showTestimonial(index) {
         textEl.innerText = `"${testimonials[index].text}"`;
         authorEl.innerText = `- ${testimonials[index].author}`;
         
-        // Update dots
+        // Update dots visual
         dots.forEach(dot => dot.classList.remove('active'));
         dots[index].classList.add('active');
         
         // Fade in
         textEl.style.opacity = 1;
         authorEl.style.opacity = 1;
-    }, 300); // Wait for fade out
+        
+        isAnimating = false;
+    }, 300); 
 }
 
-// Auto rotate every 5 seconds
-setInterval(() => {
+function nextSlide() {
     let next = (currentTestimonial + 1) % testimonials.length;
-    showTestimonial(next);
-}, 5000);
+    showTestimonial(next, false);
+}
+
+// Function to start/restart timer
+function startInterval() {
+    slideInterval = setInterval(nextSlide, 5000);
+}
+
+// Function to clear and restart timer (prevents lag on click)
+function resetInterval() {
+    clearInterval(slideInterval);
+    startInterval();
+}
+
+// Start the timer initially
+startInterval();
 
 // 4. Form Handling Simulation
 function handleForm(event) {
