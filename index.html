@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tender Hearts Learning Daycare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-heart"></i> Tender Hearts
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#programs">Programs</a>
+                <a href="#enrollment">Enrollment</a>
+                <a href="#contact" class="btn-nav">Contact Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="reveal">Where Little <span>Hearts</span> Grow</h1>
+            <p class="reveal">Providing safe, loving, and educational care for children in Casper, WY.</p>
+            <a href="#enrollment"><button class="btn-cta reveal">Enroll Now</button></a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="section-title">About Our Family</div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <h3>Our Mission & Philosophy</h3>
+                <p>At Tender Hearts Learning Daycare, we believe every child deserves a safe, nurturing environment to explore the world. Our philosophy is built on "Learning through Play," ensuring that education is engaging and fun.</p>
+                <br>
+                <p>We are a 5-star rated facility dedicated to fostering social, emotional, and cognitive growth.</p>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <i class="fas fa-star"></i>
+                        <h4>5.0 Rating</h4>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-certificate"></i>
+                        <h4>Certified</h4>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-clock"></i>
+                        <h4>7AM - 6PM</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="about-img reveal">
+                <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&q=80" alt="Happy children learning">
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="section programs">
+        <div class="section-title">Our Programs</div>
+        <div class="program-grid">
+            <div class="program-card">
+                <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80" alt="Infant Care"></div>
+                <div class="card-content">
+                    <span class="tag">0 - 18 Months</span>
+                    <h3>Infants</h3>
+                    <p>Nurturing care focusing on sensory development, motor skills, and building a secure attachment.</p>
+                </div>
+            </div>
+            <div class="program-card">
+                <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1566004100631-35d015d6a491?auto=format&fit=crop&q=80" alt="Toddler Care"></div>
+                <div class="card-content">
+                    <span class="tag">18 Mo - 3 Years</span>
+                    <h3>Toddlers</h3>
+                    <p>Active play, social interaction, and early language development in a safe, structured environment.</p>
+                </div>
+            </div>
+            <div class="program-card">
+                <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80" alt="Preschool"></div>
+                <div class="card-content">
+                    <span class="tag">3 - 5 Years</span>
+                    <h3>Preschool</h3>
+                    <p>Kindergarten readiness curriculum featuring literacy, math basics, arts, and creative expression.</p>
+                </div>
+            </div>
+            <div class="program-card">
+                <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80" alt="After School"></div>
+                <div class="card-content">
+                    <span class="tag">5 - 12 Years</span>
+                    <h3>After School</h3>
+                    <p>Homework assistance, outdoor activities, and relaxation time for school-aged children.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="testimonials">
+        <div class="section-title" style="margin-bottom: 2rem;">Parent Love</div>
+        <div class="testimonial-container reveal">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p class="testimonial-text">"Absolutely the best daycare in Casper! My daughter loves the staff."</p>
+            <span class="testimonial-author">- Sarah Jenkins</span>
+            <div class="dots"></div>
+        </div>
+    </div>
+
+    <section id="enrollment" class="section">
+        <div class="section-title">Join Our Family</div>
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>Online Pre-Registration</h3>
+                <p style="margin-bottom:20px;">Fill out the details below and we will contact you to schedule a tour.</p>
+                <form id="enrollForm" onsubmit="handleForm(event)">
+                    <label>Parent's Name</label>
+                    <input type="text" required placeholder="John Doe">
+                    
+                    <label>Child's Name & Age</label>
+                    <input type="text" required placeholder="Jane Doe, 3 years">
+                    
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="email@example.com">
+                    
+                    <label>Program Interest</label>
+                    <select>
+                        <option>Infant</option>
+                        <option>Toddler</option>
+                        <option>Preschool</option>
+                        <option>After School</option>
+                    </select>
+                    
+                    <button type="submit" class="btn-cta" style="width:100%">Submit Inquiry</button>
+                </form>
+            </div>
+
+            <div class="about-img reveal" style="min-height: 400px;">
+                 <img src="https://images.unsplash.com/photo-1596464716127-f9a0859b4afd?auto=format&fit=crop&q=80" style="height:100%; object-fit:cover;">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-title">Contact Us</div>
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>Get in Touch</h3>
+                <br>
+                <div style="display:flex; gap:15px; margin-bottom:20px;">
+                    <i class="fas fa-map-marker-alt" style="color:var(--primary); margin-top:5px;"></i>
+                    <div><strong>Address:</strong><br>77 Dahlia St, Casper, WY 82604</div>
+                </div>
+                <div style="display:flex; gap:15px; margin-bottom:20px;">
+                    <i class="fas fa-phone" style="color:var(--primary); margin-top:5px;"></i>
+                    <div><strong>Phone:</strong><br>+1 307-215-4034</div>
+                </div>
+                <div style="display:flex; gap:15px;">
+                    <i class="fas fa-clock" style="color:var(--primary); margin-top:5px;"></i>
+                    <div><strong>Hours:</strong><br>Mon - Fri: 7:00 AM - 6:00 PM</div>
+                </div>
+            </div>
+
+            <div class="reveal" style="border-radius: 20px; overflow: hidden; height: 100%; min-height: 350px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2938.648348632661!2d-106.3986426!3d42.8378939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8760bc0f90e5f9a7%3A0x6b6e4e0e0e0e0e0e!2s77%20Dahlia%20St%2C%20Casper%2C%20WY%2082604!5e0!3m2!1sen!2sus!4v1620000000000"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Tender Hearts</h4>
+                <p>Loving care for Casper's little ones.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>77 Dahlia St, Casper, WY 82604</p>
+                <p>+1 307-215-4034</p>
+            </div>
+        </div>
+        <div style="text-align:center; padding-top:20px; border-top:1px solid #666; font-size:0.9rem;">
+            © 2024 Tender Hearts Learning Daycare. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
